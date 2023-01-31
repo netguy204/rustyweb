@@ -5,6 +5,8 @@ metadata:
   namespace: default
 spec:
   tag: us-east1-docker.pkg.dev/prod-prototype/default/rustyweb
+  additionalTags:
+  - us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:next
   serviceAccountName: kpack-builder
   builder:
     name: rust-builder
