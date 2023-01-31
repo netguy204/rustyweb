@@ -6,7 +6,7 @@ metadata:
 spec:
   tag: us-east1-docker.pkg.dev/prod-prototype/default/rustyweb
   additionalTags:
-  - us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:next2
+  - us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:next
   serviceAccountName: kpack-builder
   builder:
     name: rust-builder
@@ -14,7 +14,7 @@ spec:
   source:
     git:
       url: https://github.com/netguy204/rustyweb
-      revision: a386a31b2cbaacf050c313ad62eadb93211b40c1
+      revision: 4256208bf145b44fdb65af10562f9858221034f9
   build:
     resources:
       limits:

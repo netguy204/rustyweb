@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:next2
+        image: us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:next
         ports:
         - name: http
           containerPort: 8080
