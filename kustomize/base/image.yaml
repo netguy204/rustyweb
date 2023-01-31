@@ -14,7 +14,7 @@ spec:
   source:
     git:
       url: https://github.com/netguy204/rustyweb
-      revision: 621d61c4a62aa27bb7bffb0cb604cb5dbdd67333
+      branch: main
   build:
     resources:
       limits:
