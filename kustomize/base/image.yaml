@@ -4,7 +4,6 @@ metadata:
   name: rustyweb
   namespace: default
 spec:
-  replicas: 3
   tag: us-east1-docker.pkg.dev/prod-prototype/default/rustyweb
   additionalTags:
   - us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:next
