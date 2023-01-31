@@ -18,8 +18,8 @@ spec:
   build:
     resources:
       limits:
-        cpu: 4
+        cpu: '4'
         ephemeral-storage: 4G
       requests:
-        cpu: 4
+        cpu: '4'
         ephemeral-storage: 4G
