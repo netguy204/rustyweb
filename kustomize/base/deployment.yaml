@@ -2,19 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rusyweb
+  labels:
+    app: rustyweb
 spec:
   selector:
-  matchLabels:
-    app: rustyweb
-  template:
-  metadata:
-    labels:
+    matchLabels:
       app: rustyweb
-  spec:
-    containers:
-    - name: app
-      image: us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:b2.20230130.224348
-      ports:
-      - name: http
-        containerPort: 8080
-        protocol: TCP
+  template:
+    metadata:
+      labels:
+        app: rustyweb
+    spec:
+      containers:
+      - name: app
+        image: us-east1-docker.pkg.dev/prod-prototype/default/rustyweb:b2.20230130.224348
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
