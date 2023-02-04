@@ -44,6 +44,9 @@ jobs:
         path: gitops
     - name: edit gitops for deploy
       run: |
+        set -ex
+        git config --global user.email "gitops@brianttaylor.com"
+        git config --global user.name "rustyweb gha"
         gitops-overlay-template/expand.sh `git rev-parse HEAD` gitops-overlay-template/production gitops/rustyweb/overlays/production
         cd gitops
         git commit -am 'automated version bump'
