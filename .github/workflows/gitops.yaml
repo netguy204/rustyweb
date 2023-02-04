@@ -38,17 +38,18 @@ jobs:
         sarif_file: rust-clippy-results.sarif
         wait-for-processing: true
     - name: Checkout Gitops
-      uses: actions/checkout@v3.3.0
+      uses: actions/checkout@v2
       with:
         repository: netguy204/prototype-git-ops
         path: gitops
+        token: ${{ secrets.GITOPS_ACCESS }}
     - name: edit gitops for deploy
       run: |
         set -ex
         git config --global user.email "gitops@brianttaylor.com"
         git config --global user.name "rustyweb gha"
-        gitops-overlay-template/expand.sh `git rev-parse HEAD` gitops-overlay-template/production gitops/rustyweb/overlays/production
+        gitops/scripts/expand.sh `git rev-parse HEAD` gitops/rustyweb/templates/production gitops/rustyweb/overlays/production
         cd gitops
         git commit -am 'automated version bump'
-        git remote add gh-token "https://${{ secrets.GH_TOKEN}}@github.com/netguy204/prototype-git-ops.git"
-        git push gh-token main
+        #git remote add gh-token "https://${{ secrets.GITOPS_ACCESS}}@github.com/netguy204/prototype-git-ops.git"
+        git push origin main
