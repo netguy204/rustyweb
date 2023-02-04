@@ -50,5 +50,5 @@ jobs:
         gitops-overlay-template/expand.sh `git rev-parse HEAD` gitops-overlay-template/production gitops/rustyweb/overlays/production
         cd gitops
         git commit -am 'automated version bump'
-        git push origin main
-
+        git remote add gh-token "https://${{ secrets.GH_TOKEN}}@github.com/netguy204/prototype-git-ops.git"
+        git push gh-token main
