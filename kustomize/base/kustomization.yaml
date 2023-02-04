@@ -1,5 +1,0 @@
-resources:
-- image.yaml
-- deployment.yaml
-- ingress.yaml
-- service.yaml

@@ -1,0 +1,47 @@
+name: update gitops
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  update-ops:
+    name: test and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install Rust toolchain
+      uses: actions-rs/toolchain@16499b5e05bf2e26879000db0c1d13f7e13fa3af #@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        components: clippy
+        override: true
+    - name: Run tests
+      run: cargo test --verbose
+      - name: Install required cargo
+        run: cargo install clippy-sarif sarif-fmt
+    - name: Run rust-clippy
+      run:
+        cargo clippy
+        --all-features
+        --message-format=json | clippy-sarif | tee rust-clippy-results.sarif | sarif-fmt
+      continue-on-error: true
+    - name: Upload analysis results to GitHub
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: rust-clippy-results.sarif
+        wait-for-processing: true
+    - name: Checkout Gitops
+      uses: uses: actions/checkout@v3.3.0
+      with:
+        repository: netguy204/prototype-git-ops
+        path: gitops
+    - name: edit gitops for deploy
+      run: |
+        gitops-overlay-template/expand.sh `git rev-parse HEAD` gitops-overlay-template/production gitops/rustyweb/overlays/production
+        cd gitops
+        git commit -am 'automated version bump'
+        git push origin head
