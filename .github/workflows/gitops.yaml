@@ -50,4 +50,5 @@ jobs:
         gitops-overlay-template/expand.sh `git rev-parse HEAD` gitops-overlay-template/production gitops/rustyweb/overlays/production
         cd gitops
         git commit -am 'automated version bump'
-        git push origin head
+        git push origin main
+
