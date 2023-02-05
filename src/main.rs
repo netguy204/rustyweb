@@ -7,6 +7,7 @@ async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello spiffy world!")
 }
 
+// wish there was a way to autoregister this stuff
 #[get("/revision")]
 async fn revision() -> impl Responder {
     HttpResponse::Ok().body(env::var("REVISION").unwrap_or("UNKNOWN".to_string()))
