@@ -2,4 +2,4 @@
 
 playing with gitops
 
-Argo status:  ![](https://35.227.20.246/api/badge?name=rustyweb)
+[![argo status](https://35.227.20.246/api/badge?name=rustyweb)](http://34.148.116.86/rustyweb)

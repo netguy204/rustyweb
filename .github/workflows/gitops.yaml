@@ -22,6 +22,7 @@ jobs:
         toolchain: stable
         components: clippy
         override: true
+    - uses: Swatinem/rust-cache@v2
     - name: Run tests
       run: cargo test --verbose
     - name: Install required cargo
