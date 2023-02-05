@@ -1,8 +1,15 @@
+use std::env;
+
 use actix_web::{get, post, App, HttpResponse, HttpServer, Responder};
 
 #[get("/")]
 async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello pastey world!")
+    HttpResponse::Ok().body("Hello spiffy world!")
+}
+
+#[get("/revision")]
+async fn revision() -> impl Responder {
+    HttpResponse::Ok().body(env::var("REVISION").unwrap_or("UNKNOWN".to_string()))
 }
 
 #[post("/echo")]
