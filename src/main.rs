@@ -4,7 +4,7 @@ use actix_web::{get, post, App, HttpResponse, HttpServer, Responder};
 
 #[get("/")]
 async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello spiffy world!")
+    HttpResponse::Ok().body("Hello testing world!")
 }
 
 // wish there was a way to auto-register this stuff
