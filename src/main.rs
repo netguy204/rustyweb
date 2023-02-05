@@ -22,6 +22,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .service(hello)
+            .service(revision)
             .service(echo)
     })
     .bind(("0.0.0.0", 8080))?
