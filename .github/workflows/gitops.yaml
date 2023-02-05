@@ -51,6 +51,7 @@ jobs:
         git config --global user.name "rustyweb gha"
         gitops/scripts/expand.sh `git rev-parse HEAD` gitops/rustyweb/templates/production gitops/rustyweb/overlays/production __REVISION__
         cd gitops
-        git commit -am 'automated version bump'
+        git add rustyweb/overlays/production/
+        git commit -m 'automated version bump'
         #git remote add gh-token "https://${{ secrets.GITOPS_ACCESS}}@github.com/netguy204/prototype-git-ops.git"
         git push origin main
